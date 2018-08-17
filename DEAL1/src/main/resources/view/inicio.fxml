@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="105.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by merge-sort" />
+      <Separator layoutX="332.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="6.0" />
+      <Label layoutX="29.0" layoutY="60.0" text="Please, enter the numbers that you want to sort" textFill="#3514b9">
+         <font>
+            <Font name="Franklin Gothic Medium" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="29.0" layoutY="160.0" prefHeight="25.0" prefWidth="270.0" />
+      <Label layoutX="37.0" layoutY="134.0" prefHeight="17.0" prefWidth="179.0" text="Arbitrarily long numbers" textFill="#e40707">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="228.0" text="Floating point numbers" textFill="#e40707">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="29.0" layoutY="255.0" prefHeight="25.0" prefWidth="262.0" />
+      <Button layoutX="105.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Button" />
+      <Button layoutX="105.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Button" />
+      <Label layoutX="406.0" layoutY="58.0" prefHeight="20.0" prefWidth="171.0" text="Generate random numbers" textFill="#156f0c">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="selec1" layoutX="357.0" layoutY="101.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="158.0" text="Arbitrarily long numbers" />
+      <RadioButton layoutX="357.0" layoutY="134.0" mnemonicParsing="false" text="Floating point numbers" />
+      <Label layoutX="361.0" layoutY="185.0" text="Length of numbers to generate">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="361.0" layoutY="216.0" />
+      <TextField layoutX="361.0" layoutY="280.0" />
+      <Label layoutX="358.0" layoutY="255.0" prefHeight="17.0" prefWidth="221.0" text="Interval where the numbers will be found">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
