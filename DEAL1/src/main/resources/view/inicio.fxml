@@ -55,7 +55,7 @@
       <Label layoutX="467.0" layoutY="231.0" text="to" />
       <TextField fx:id="upperIntervalTxt" layoutX="494.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
       <RadioButton fx:id="orderedNormalyRadioButt" layoutX="358.0" layoutY="310.0" mnemonicParsing="false" text="Already ordered" />
-      <RadioButton fx:id="InverselyOrderedRadioButt" layoutX="491.0" layoutY="310.0" mnemonicParsing="false" text="Ordered inversely" />
+      <RadioButton fx:id="inverselyOrderedRadioButt" layoutX="491.0" layoutY="310.0" mnemonicParsing="false" text="Ordered inversely" />
       <RadioButton fx:id="randomNumbersRadioButt" layoutX="358.0" layoutY="338.0" mnemonicParsing="false" text="Randon numbers" />
       <Separator layoutX="334.0" layoutY="294.0" prefHeight="7.0" prefWidth="336.0" />
       <Label layoutX="154.0" layoutY="159.0" text="or" textFill="#c90707" />
