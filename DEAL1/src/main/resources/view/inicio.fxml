@@ -8,47 +8,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.dea.controller.StartController">
    <children>
-      <Button layoutX="105.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by merge-sort" />
+      <Button fx:id="mergeButt1" layoutX="92.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Sort by Merge-sort" />
       <Separator layoutX="332.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="6.0" />
-      <Label layoutX="29.0" layoutY="60.0" text="Please, enter the numbers that you want to sort" textFill="#3514b9">
+      <Label layoutX="77.0" layoutY="23.0" text="Generate numbers manually" textFill="#3514b9">
          <font>
-            <Font name="Franklin Gothic Medium" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="29.0" layoutY="160.0" prefHeight="25.0" prefWidth="270.0" />
-      <Label layoutX="37.0" layoutY="134.0" prefHeight="17.0" prefWidth="179.0" text="Arbitrarily long numbers" textFill="#e40707">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="37.0" layoutY="228.0" text="Floating point numbers" textFill="#e40707">
+      <TextField fx:id="arbitrarilyTxt" layoutX="30.0" layoutY="108.0" prefHeight="25.0" prefWidth="270.0" />
+      <Label layoutX="38.0" layoutY="82.0" prefHeight="17.0" prefWidth="179.0" text="Arbitrarily long numbers" textFill="#e40707">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="29.0" layoutY="255.0" prefHeight="25.0" prefWidth="262.0" />
-      <Button layoutX="105.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Button" />
-      <Button layoutX="105.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Button" />
-      <Label layoutX="406.0" layoutY="58.0" prefHeight="20.0" prefWidth="171.0" text="Generate random numbers" textFill="#156f0c">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <RadioButton fx:id="selec1" layoutX="357.0" layoutY="101.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="158.0" text="Arbitrarily long numbers" />
-      <RadioButton layoutX="357.0" layoutY="134.0" mnemonicParsing="false" text="Floating point numbers" />
-      <Label layoutX="361.0" layoutY="185.0" text="Length of numbers to generate">
+      <Label layoutX="37.0" layoutY="197.0" text="Floating point numbers" textFill="#e40707">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField layoutX="361.0" layoutY="216.0" />
-      <TextField layoutX="361.0" layoutY="280.0" />
-      <Label layoutX="358.0" layoutY="255.0" prefHeight="17.0" prefWidth="221.0" text="Interval where the numbers will be found">
+      <TextField fx:id="floatingPointtxt" layoutX="29.0" layoutY="224.0" prefHeight="25.0" prefWidth="262.0" />
+      <Button fx:id="radixButt1" layoutX="92.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Sort by Radix-sort" />
+      <Button fx:id="heapButt1" layoutX="91.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Sort by Heap-sort" />
+      <Label layoutX="401.0" layoutY="23.0" prefHeight="20.0" prefWidth="179.0" text="Generate random numbers" textFill="#156f0c">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="arbitrarilyRadioButt" layoutX="365.0" layoutY="66.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="158.0" text="Arbitrarily long numbers" />
+      <RadioButton fx:id="floatingPointRadioButt" layoutX="365.0" layoutY="99.0" mnemonicParsing="false" text="Floating point numbers" />
+      <Label layoutX="361.0" layoutY="134.0" text="Length of numbers to generate">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <TextField fx:id="lengthNumbersTxt" layoutX="364.0" layoutY="163.0" />
+      <TextField fx:id="loweIntervalTxt" layoutX="364.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
+      <Label layoutX="361.0" layoutY="202.0" prefHeight="17.0" prefWidth="239.0" text="Interval where the numbers will be found">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="repeatedRadioButt" layoutX="360.0" layoutY="263.0" mnemonicParsing="false" text="Repeated numbers" />
+      <RadioButton fx:id="nonRepeatedRadioButt" layoutX="494.0" layoutY="263.0" mnemonicParsing="false" text="Non-repeated numbers" />
+      <Label layoutX="467.0" layoutY="231.0" text="to" />
+      <TextField fx:id="upperIntervalTxt" layoutX="494.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
+      <RadioButton fx:id="orderedNormalyRadioButt" layoutX="358.0" layoutY="310.0" mnemonicParsing="false" text="Already ordered" />
+      <RadioButton fx:id="InverselyOrderedRadioButt" layoutX="491.0" layoutY="310.0" mnemonicParsing="false" text="Ordered inversely" />
+      <RadioButton fx:id="randomNumbersRadioButt" layoutX="358.0" layoutY="338.0" mnemonicParsing="false" text="Randon numbers" />
+      <Separator layoutX="334.0" layoutY="294.0" prefHeight="7.0" prefWidth="336.0" />
+      <Label layoutX="154.0" layoutY="159.0" text="or" textFill="#c90707" />
+      <Button fx:id="heapButt2" layoutX="419.0" layoutY="413.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Sort by Heap-sort" />
+      <Button fx:id="mergeButt2" layoutX="348.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by Merge-sort" />
+      <Button fx:id="radixButt2" layoutX="501.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by Radix-sort" />
    </children>
 </AnchorPane>
