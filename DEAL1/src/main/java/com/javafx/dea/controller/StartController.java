@@ -47,7 +47,7 @@ public class StartController {
     private RadioButton orderedNormalyRadioButt;
 
     @FXML
-    private RadioButton InverselyOrderedRadioButt;
+    private RadioButton inverselyOrderedRadioButt;
 
     @FXML
     private RadioButton randomNumbersRadioButt;
@@ -60,5 +60,98 @@ public class StartController {
 
     @FXML
     private Button radixButt2;
+
+	public StartController() {
+		this.mergeButt1 = new Button();
+		this.arbitrarilyTxt = new TextField();
+		this.floatingPointtxt = new TextField();
+		this.radixButt1 = new Button();
+		this.heapButt1 = new Button();
+		this.arbitrarilyRadioButt = new RadioButton();
+		this.floatingPointRadioButt = new RadioButton();
+		this.lengthNumbersTxt = new TextField();
+		this.loweIntervalTxt = new TextField();
+		this.repeatedRadioButt = new RadioButton();
+		this.nonRepeatedRadioButt = new RadioButton();
+		this.upperIntervalTxt = new TextField();
+		this.orderedNormalyRadioButt = new RadioButton();
+		inverselyOrderedRadioButt = new RadioButton();
+		this.randomNumbersRadioButt = new RadioButton();
+		this.heapButt2 = new Button();
+		this.mergeButt2 = new Button();
+		this.radixButt2 = new Button();
+	}
+
+	public Button getMergeButt1() {
+		return mergeButt1;
+	}
+
+	public TextField getArbitrarilyTxt() {
+		return arbitrarilyTxt;
+	}
+
+	public TextField getFloatingPointtxt() {
+		return floatingPointtxt;
+	}
+
+	public Button getRadixButt1() {
+		return radixButt1;
+	}
+
+	public Button getHeapButt1() {
+		return heapButt1;
+	}
+
+	public RadioButton getArbitrarilyRadioButt() {
+		return arbitrarilyRadioButt;
+	}
+
+	public RadioButton getFloatingPointRadioButt() {
+		return floatingPointRadioButt;
+	}
+
+	public TextField getLengthNumbersTxt() {
+		return lengthNumbersTxt;
+	}
+
+	public TextField getLoweIntervalTxt() {
+		return loweIntervalTxt;
+	}
+
+	public RadioButton getRepeatedRadioButt() {
+		return repeatedRadioButt;
+	}
+
+	public RadioButton getNonRepeatedRadioButt() {
+		return nonRepeatedRadioButt;
+	}
+
+	public TextField getUpperIntervalTxt() {
+		return upperIntervalTxt;
+	}
+
+	public RadioButton getOrderedNormalyRadioButt() {
+		return orderedNormalyRadioButt;
+	}
+
+	public RadioButton getInverselyOrderedRadioButt() {
+		return inverselyOrderedRadioButt;
+	}
+
+	public RadioButton getRandomNumbersRadioButt() {
+		return randomNumbersRadioButt;
+	}
+
+	public Button getHeapButt2() {
+		return heapButt2;
+	}
+
+	public Button getMergeButt2() {
+		return mergeButt2;
+	}
+
+	public Button getRadixButt2() {
+		return radixButt2;
+	}
 	
 }
