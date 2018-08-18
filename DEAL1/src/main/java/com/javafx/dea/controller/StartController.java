@@ -1,11 +1,16 @@
 package com.javafx.dea.controller;
 
+import com.javafx.dea.main.Main;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class StartController {
+	
+	private Main principal;
 	
     @FXML
     private Button mergeButt1;
@@ -142,6 +147,7 @@ public class StartController {
 		return randomNumbersRadioButt;
 	}
 
+	
 	public Button getHeapButt2() {
 		return heapButt2;
 	}
@@ -153,5 +159,11 @@ public class StartController {
 	public Button getRadixButt2() {
 		return radixButt2;
 	}
+	
+	@FXML
+    void showResultMerge1(ActionEvent event) {
+		principal.showMessageResultMerge1();
+    }
+
 	
 }

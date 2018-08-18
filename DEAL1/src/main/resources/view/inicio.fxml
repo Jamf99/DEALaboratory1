@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.dea.controller.StartController">
    <children>
-      <Button fx:id="mergeButt1" layoutX="92.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Sort by Merge-sort" />
+      <Button fx:id="mergeButt1" layoutX="92.0" layoutY="285.0" mnemonicParsing="false" onAction="#showResultMerge1" prefHeight="25.0" prefWidth="145.0" text="Sort by Merge-sort" />
       <Separator layoutX="332.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="6.0" />
       <Label layoutX="77.0" layoutY="23.0" text="Generate numbers manually" textFill="#3514b9">
          <font>
