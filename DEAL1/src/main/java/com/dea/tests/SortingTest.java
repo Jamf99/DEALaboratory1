@@ -22,7 +22,8 @@ class SortingTest extends TestCase{
 	@Test
 	public void testMerge() {
 		stage1();
-		double[] n = {0,3,4,6,7.01,7.5,8,8,9,10,10,11,12,14,15};
+//		double[] n = {0,3,4,6,7.01,7.5,8,8,9,10,10,11,12,14,15};
+		int[] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		s.merge((numbers2));
 		for(int i = 0; i < n.length; i++) {
 			assertEquals(n[i], numbers2[i]);
@@ -40,10 +41,11 @@ class SortingTest extends TestCase{
 	@Test
 	public void testHeap() {
 		stage1();
-		double[] n = {0,3,4,6,7.01,7.5,8,8,9,10,10,11,12,14,15};
+//		double[] n = {0,3,4,6,7.01,7.5,8,8,9,10,10,11,12,14,15};
+		int[] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		s.heap(numbers2);
 		for(int i = 0; i < n.length; i++) {
-			assertEquals(n[i], numbers1[i]);
+			assertEquals(n[i], numbers2[i]);
 		}
 	}
 
