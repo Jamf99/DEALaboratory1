@@ -4,4 +4,20 @@ public class Sorting {
 	
 	Methods methods;
 	
+	public Sorting() {
+		
+	}
+	
+	public void merge(int[] numbers) {
+		methods.merge(numbers);
+	}
+	
+	public void radix(int[] numbers) {
+		methods.radixSort(numbers);
+	}
+	
+	public void heap(int[] numbers) {
+		methods.heapSort(numbers);
+	}
+	
 }
