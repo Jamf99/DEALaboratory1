@@ -2,6 +2,8 @@ package com.javafx.dea.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -155,9 +157,9 @@ public class StartController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		preferencesTypeCBox.getItems().add("Ordered normally");
-		preferencesTypeCBox.getItems().add("Inversely ordered");
-		preferencesTypeCBox.getItems().add("Random numbers");		
+		ObservableList<String> states = FXCollections.observableArrayList("Ordered Normally", "Inversely Ordered", "Random Numbers");
+		preferencesTypeCBox.setItems(states);
+		preferencesTypeCBox.getSelectionModel().select(0);
 	}
 
 	
