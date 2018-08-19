@@ -5,7 +5,7 @@ public class Sorting {
 	Methods methods;
 	
 	public Sorting() {
-		
+		methods = new Methods();
 	}
 	
 	public void merge(int[] numbers) {
