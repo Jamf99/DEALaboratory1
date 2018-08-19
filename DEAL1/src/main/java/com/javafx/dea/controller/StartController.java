@@ -1,11 +1,17 @@
 package com.javafx.dea.controller;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-public class StartController {
+public class StartController implements Initializable{
 	
     @FXML
     private Button mergeButt1;
@@ -42,15 +48,9 @@ public class StartController {
 
     @FXML
     private TextField upperIntervalTxt;
-
+    
     @FXML
-    private RadioButton orderedNormalyRadioButt;
-
-    @FXML
-    private RadioButton inverselyOrderedRadioButt;
-
-    @FXML
-    private RadioButton randomNumbersRadioButt;
+    private ComboBox<String> preferencesTypeCBox;
 
     @FXML
     private Button heapButt2;
@@ -74,9 +74,7 @@ public class StartController {
 		this.repeatedRadioButt = new RadioButton();
 		this.nonRepeatedRadioButt = new RadioButton();
 		this.upperIntervalTxt = new TextField();
-		this.orderedNormalyRadioButt = new RadioButton();
-		inverselyOrderedRadioButt = new RadioButton();
-		this.randomNumbersRadioButt = new RadioButton();
+		this.preferencesTypeCBox = new ComboBox<String>();
 		this.heapButt2 = new Button();
 		this.mergeButt2 = new Button();
 		this.radixButt2 = new Button();
@@ -129,17 +127,9 @@ public class StartController {
 	public TextField getUpperIntervalTxt() {
 		return upperIntervalTxt;
 	}
-
-	public RadioButton getOrderedNormalyRadioButt() {
-		return orderedNormalyRadioButt;
-	}
-
-	public RadioButton getInverselyOrderedRadioButt() {
-		return inverselyOrderedRadioButt;
-	}
-
-	public RadioButton getRandomNumbersRadioButt() {
-		return randomNumbersRadioButt;
+	
+	public ComboBox<String> getPreferencesTypeCBox() {
+		return preferencesTypeCBox;
 	}
 
 	public Button getHeapButt2() {
@@ -153,5 +143,22 @@ public class StartController {
 	public Button getRadixButt2() {
 		return radixButt2;
 	}
+
+	@FXML
+    void showResultMerge1(ActionEvent event) {
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Merge-sort");
+		message.setContentText("");
+		message.setHeaderText("The numbers have been sorted by Merge-sort!");
+		message.show();
+    }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		preferencesTypeCBox.getItems().add("Ordered normally");
+		preferencesTypeCBox.getItems().add("Inversely ordered");
+		preferencesTypeCBox.getItems().add("Random numbers");		
+	}
+
 	
 }
