@@ -24,18 +24,18 @@ public class Methods {
 	
 	public static void merge(int A[],int izq, int m, int der){
 		   int i, j, k;
-		   int [] B = new int[A.length]; //array auxiliar
-		   for (i=izq; i<=der; i++) //copia ambas mitades en el array auxiliar
+		   int [] B = new int[A.length]; 
+		   for (i=izq; i<=der; i++) 
 		             B[i]=A[i];
 
 		             i=izq; j=m+1; k=izq;
-		             while (i<=m && j<=der) //copia el siguiente elemento más grande
+		             while (i<=m && j<=der) 
 		             if (B[i]<=B[j])
 		                     A[k++]=B[i++];
 		             else
 		                     A[k++]=B[j++];
-		             while (i<=m) //copia los elementos que quedan de la
-		                           A[k++]=B[i++]; //primera mitad (si los hay)
+		             while (i<=m) 
+		                           A[k++]=B[i++]; 
 	}
 	
 	public void radixSort(int[] numbers) {
