@@ -16,7 +16,7 @@ class SortingTest extends TestCase{
 	private Sorting s;
 	
 	private void stage1() {
-		s = new Sorting();
+		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
 	}
 	
 	@Test
