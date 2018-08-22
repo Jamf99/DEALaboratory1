@@ -2,6 +2,8 @@ package com.javafx.dea.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.dea.model.Sorting;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class StartController implements Initializable{
+	
+	private Sorting world;
 	
     @FXML
     private Button mergeButt1;
@@ -101,6 +105,44 @@ public class StartController implements Initializable{
 	public String getFloatingPoint() {
 		return floatingPointtxt.getText();
 	}
+	
+	public String sortByMerge() {
+		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		String string = "";
+		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
+		
+		world.merge(numbers, (int)numbers[0], (int)numbers[numbers.length-1]);
+		
+		for (int i =0; i < numbers.length; i++) {
+			string+=numbers[i]+" // ";
+		}
+		return string;
+	}
+	
+	public String sortByHeap() {
+		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		String string = "";
+		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
+		world.heap(numbers);
+
+		for (int i = 0; i < numbers.length; i++) {
+			string+=numbers[i]+" // ";
+		}
+		return string;
+	}
+	
+	public String sortByRadix() {
+		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		String string = "";
+		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
+		
+		world.radix(numbers);
+
+		for (int i = 0; i < numbers.length; i++) {
+			string+=numbers[i]+" - ";
+		}
+		return string;
+	}
 
 	@FXML
     void showResultMerge2(ActionEvent event) {
@@ -151,8 +193,11 @@ public class StartController implements Initializable{
     void showResultMerge1(ActionEvent event) {
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Merge-sort");
-		message.setContentText("");
-		message.setHeaderText("The numbers have been sorted by Merge-sort!");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByMerge());
+		double end = System.currentTimeMillis();
+		double value = end - start;
+		message.setHeaderText("The numbers have been sorted by Merge-sort!, and it lasted "+value+" milli seconds");
 		message.show();
     }
 	
@@ -160,8 +205,11 @@ public class StartController implements Initializable{
     void showResultRadix1(ActionEvent event) {
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Radix-sort");
-		message.setContentText("");
-		message.setHeaderText("The numbers have been sorted by Radix-sort!");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByRadix());
+		double end = System.currentTimeMillis();
+		double value = end - start;
+		message.setHeaderText("The numbers have been sorted by Radix-sort!, and it lasted "+value+" milli seconds");
 		message.show();
     }
 	
@@ -169,8 +217,12 @@ public class StartController implements Initializable{
     void showResultHeap1(ActionEvent event) {
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Heap-sort");
-		message.setContentText("");
-		message.setHeaderText("The numbers have been sorted by Heap-sort!");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByHeap());
+		double end = System.currentTimeMillis();
+		double value = end-start;
+		System.out.println(value);
+		message.setHeaderText("The numbers have been sorted by Heap-sort!, and it lasted "+value+" milli seconds");
 		message.show();
     }
 
