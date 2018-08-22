@@ -40,7 +40,7 @@ public class StartController implements Initializable{
     private TextField lengthNumbersTxt;
 
     @FXML
-    private TextField loweIntervalTxt;
+    private TextField lowerIntervalTxt;
 
     @FXML
     private RadioButton repeatedRadioButt;
@@ -72,7 +72,7 @@ public class StartController implements Initializable{
 		this.arbitrarilyRadioButt = new RadioButton();
 		this.floatingPointRadioButt = new RadioButton();
 		this.lengthNumbersTxt = new TextField();
-		this.loweIntervalTxt = new TextField();
+		this.lowerIntervalTxt = new TextField();
 		this.repeatedRadioButt = new RadioButton();
 		this.nonRepeatedRadioButt = new RadioButton();
 		this.upperIntervalTxt = new TextField();
@@ -81,77 +81,96 @@ public class StartController implements Initializable{
 		this.mergeButt2 = new Button();
 		this.radixButt2 = new Button();
 	}
-
-	public Button getMergeButt1() {
-		return mergeButt1;
-	}
-
-	public TextField getArbitrarilyTxt() {
-		return arbitrarilyTxt;
-	}
-
-	public TextField getFloatingPointtxt() {
-		return floatingPointtxt;
-	}
-
-	public Button getRadixButt1() {
-		return radixButt1;
-	}
-
-	public Button getHeapButt1() {
-		return heapButt1;
-	}
-
-	public RadioButton getArbitrarilyRadioButt() {
-		return arbitrarilyRadioButt;
-	}
-
-	public RadioButton getFloatingPointRadioButt() {
-		return floatingPointRadioButt;
-	}
-
-	public TextField getLengthNumbersTxt() {
-		return lengthNumbersTxt;
-	}
-
-	public TextField getLoweIntervalTxt() {
-		return loweIntervalTxt;
-	}
-
-	public RadioButton getRepeatedRadioButt() {
-		return repeatedRadioButt;
-	}
-
-	public RadioButton getNonRepeatedRadioButt() {
-		return nonRepeatedRadioButt;
-	}
-
-	public TextField getUpperIntervalTxt() {
-		return upperIntervalTxt;
+	
+	public double getLengthNumbers() throws NumberFormatException{
+		return Double.parseDouble(lengthNumbersTxt.getText());
 	}
 	
-	public ComboBox<String> getPreferencesTypeCBox() {
-		return preferencesTypeCBox;
+	public double getLowerInterval() throws NumberFormatException {
+		return Double.parseDouble(lowerIntervalTxt.getText());
+	}
+	
+	public double getUpperInterval() throws NumberFormatException {
+		return Double.parseDouble(upperIntervalTxt.getText());
+	}
+	
+	public String getArbitrarily() {
+		return arbitrarilyTxt.getText();
+	}
+	
+	public String getFloatingPoint() {
+		return floatingPointtxt.getText();
 	}
 
-	public Button getHeapButt2() {
-		return heapButt2;
-	}
-
-	public Button getMergeButt2() {
-		return mergeButt2;
-	}
-
-	public Button getRadixButt2() {
-		return radixButt2;
-	}
-
+	@FXML
+    void showResultMerge2(ActionEvent event) {
+		try {
+			getLengthNumbers();
+			getLowerInterval();
+			getUpperInterval();
+		}catch(NumberFormatException e) {
+			Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Please enter a numeric data");
+			message.setHeaderText("Error in the entered number");
+			message.show();
+		}
+    }
+	
+	@FXML
+    void showResultRadix2(ActionEvent event) {
+		try {
+			getLengthNumbers();
+			getLowerInterval();
+			getUpperInterval();
+		}catch(NumberFormatException e) {
+			Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Please enter a numeric data");
+			message.setHeaderText("Error in the entered number");
+			message.show();
+		}
+    }
+	
+	@FXML
+    void showResultHeap2(ActionEvent event) {
+		try {
+			getLengthNumbers();
+			getLowerInterval();
+			getUpperInterval();
+		}catch(NumberFormatException e) {
+			Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Please enter a numeric data");
+			message.setHeaderText("Error in the entered number");
+			message.show();
+		}
+    }
+	
 	@FXML
     void showResultMerge1(ActionEvent event) {
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Merge-sort");
 		message.setContentText("");
 		message.setHeaderText("The numbers have been sorted by Merge-sort!");
+		message.show();
+    }
+	
+	@FXML
+    void showResultRadix1(ActionEvent event) {
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Radix-sort");
+		message.setContentText("");
+		message.setHeaderText("The numbers have been sorted by Radix-sort!");
+		message.show();
+    }
+	
+	@FXML
+    void showResultHeap1(ActionEvent event) {
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Heap-sort");
+		message.setContentText("");
+		message.setHeaderText("The numbers have been sorted by Heap-sort!");
 		message.show();
     }
 

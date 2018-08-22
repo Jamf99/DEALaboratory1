@@ -35,11 +35,11 @@
          </font>
       </Label>
       <TextField fx:id="floatingPointtxt" layoutX="29.0" layoutY="224.0" prefHeight="25.0" prefWidth="262.0" />
-      <Button fx:id="radixButt1" layoutX="92.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Sort by Radix-sort">
+      <Button fx:id="radixButt1" layoutX="92.0" layoutY="342.0" mnemonicParsing="false" onAction="#showResultRadix1" prefHeight="25.0" prefWidth="146.0" text="Sort by Radix-sort">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="heapButt1" layoutX="91.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Sort by Heap-sort">
+      <Button fx:id="heapButt1" layoutX="91.0" layoutY="400.0" mnemonicParsing="false" onAction="#showResultHeap1" prefHeight="25.0" prefWidth="146.0" text="Sort by Heap-sort">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -59,7 +59,7 @@
          </font>
       </Label>
       <TextField fx:id="lengthNumbersTxt" layoutX="364.0" layoutY="163.0" />
-      <TextField fx:id="loweIntervalTxt" layoutX="364.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="lowerIntervalTxt" layoutX="364.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="361.0" layoutY="202.0" prefHeight="17.0" prefWidth="239.0" text="Interval where the numbers will be found">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -74,15 +74,15 @@
       <TextField fx:id="upperIntervalTxt" layoutX="494.0" layoutY="227.0" prefHeight="25.0" prefWidth="85.0" />
       <Separator layoutX="334.0" layoutY="294.0" prefHeight="7.0" prefWidth="336.0" />
       <Label layoutX="154.0" layoutY="159.0" text="or" />
-      <Button fx:id="heapButt2" layoutX="419.0" layoutY="413.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Sort by Heap-sort">
+      <Button fx:id="heapButt2" layoutX="419.0" layoutY="413.0" mnemonicParsing="false" onAction="#showResultHeap2" prefHeight="25.0" prefWidth="145.0" text="Sort by Heap-sort">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="mergeButt2" layoutX="348.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by Merge-sort">
+      <Button fx:id="mergeButt2" layoutX="348.0" layoutY="375.0" mnemonicParsing="false" onAction="#showResultMerge2" prefHeight="25.0" prefWidth="133.0" text="Sort by Merge-sort">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="radixButt2" layoutX="501.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Sort by Radix-sort">
+      <Button fx:id="radixButt2" layoutX="501.0" layoutY="375.0" mnemonicParsing="false" onAction="#showResultRadix2" prefHeight="25.0" prefWidth="133.0" text="Sort by Radix-sort">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
