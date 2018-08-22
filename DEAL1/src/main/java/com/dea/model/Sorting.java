@@ -1,5 +1,6 @@
 package com.dea.model;
 
+
 public class Sorting {
 	
 	public static final int ARBITRARILY_LONG_NUMBERS = 1;
@@ -22,20 +23,25 @@ public class Sorting {
 		return typeOfNumbers;
 	}
 	
-	public void merge(int[] numbers) {
-		methods.merge(numbers);
+	public void merge(double[] numbers, int low, int high) {
+		methods.mergeSort(numbers, low, high);
 	}
 	
-	public void radix(int[] numbers) {
+	public void radix(double[] numbers) {
 		methods.radixSort(numbers);
 	}
 	
-	public void heap(int[] numbers) {
+	public void heap(double[] numbers) {
 		methods.heapSort(numbers);
 	}
 	
-	public double calculateAlgorithmRunTime() {
-		return 0;
+	public double[] transformStringToDouble(String string) {
+		String[] aux = string.split(",");
+		double[] numbers = new double[aux.length];
+		for(int i = 0; i < aux.length; i++) {
+			numbers[i] = Double.parseDouble(aux[i]);
+		}
+		return numbers;
 	}
 	
 }
