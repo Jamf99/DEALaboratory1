@@ -111,7 +111,7 @@ public class StartController implements Initializable{
 		String string = "";
 		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
 		
-		world.merge(numbers, (int)numbers[0], (int)numbers[numbers.length-1]);
+		world.merge(numbers);
 		
 		for (int i =0; i < numbers.length; i++) {
 			string+=numbers[i]+" // ";

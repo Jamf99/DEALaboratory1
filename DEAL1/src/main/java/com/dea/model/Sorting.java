@@ -23,8 +23,8 @@ public class Sorting {
 		return typeOfNumbers;
 	}
 	
-	public void merge(double[] numbers, int low, int high) {
-		methods.mergeSort(numbers, low, high);
+	public void merge(double[] numbers) {
+		methods.mergeSort(numbers, 0, numbers.length - 1);
 	}
 	
 	public void radix(double[] numbers) {
