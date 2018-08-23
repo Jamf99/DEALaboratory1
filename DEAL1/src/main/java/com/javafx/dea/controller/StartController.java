@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 public class StartController implements Initializable{
 	
 	private Sorting world;
+	private AutomaticSorting world2;
 	
     @FXML
     private Button mergeButt1;
@@ -93,12 +94,20 @@ public class StartController implements Initializable{
 		return Integer.parseInt(lengthNumbersTxt.getText());
 	}
 	
-	public BigInteger getLowerInterval() throws NumberFormatException {
+	public BigInteger getLowerIntervalBigInteger() throws NumberFormatException {
 		return new BigInteger(lowerIntervalTxt.getText());
 	}
 	
-	public BigInteger getUpperInterval() throws NumberFormatException {
+	public BigInteger getUpperIntervalBigInteger() throws NumberFormatException {
 		return new BigInteger(upperIntervalTxt.getText());
+	}
+	
+	public BigDecimal getLowerIntervalBigDecimal() throws NumberFormatException {
+		return new BigDecimal(lowerIntervalTxt.getText());
+	}
+	
+	public BigDecimal getUpperIntervalBigDecimal() throws NumberFormatException {
+		return new BigDecimal(upperIntervalTxt.getText());
 	}
 	
 	public String getArbitrarily() {
@@ -192,36 +201,81 @@ public class StartController implements Initializable{
 		String string = "";
 		try {
 			int lengthNumbers = getLengthNumbers();
-			BigInteger lower = getLowerInterval();
-			BigInteger upper = getUpperInterval();
+			BigInteger lower1 = getLowerIntervalBigInteger();
+			BigInteger upper1 = getUpperIntervalBigInteger();
+			
+			BigDecimal lower2 = getLowerIntervalBigDecimal();
+			BigDecimal upper2 = getUpperIntervalBigDecimal();
 			
 			if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.ORDERED_NORMALLY) {
-				if(repeatedRadioButt.isSelected()) {
-					if(arbitrarilyRadioButt.isSelected()) {
-						world = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower, upper, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
-//						BigInteger[] numbers = world.
-//						world.mergeBigInteger(numbers);
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
 					}else {
-						
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.mergeBigInteger(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
 					}
 				}else {
-					if(arbitrarilyRadioButt.isSelected()) {
-						
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
 					}else {
-						
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.mergeBigDecimal(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
 					}
 				}
 			}else if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.INVERSELY_ORDERED) {
-				if(repeatedRadioButt.isSelected()) {
-					
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.mergeBigIntegerInversely(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
 				}else {
-					
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.mergeBigDecimalInversely(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
 				}
 			}else {
-				if(repeatedRadioButt.isSelected()) {
-						
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
 				}else {
-						
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
 				}
 			}
 			
@@ -233,7 +287,193 @@ public class StartController implements Initializable{
 			message.show();
 		}
 			
-		return "";
+		return string;
+	}
+	
+	public String sortByRadixAutomatic() {
+		String string = "";
+		try {
+			int lengthNumbers = getLengthNumbers();
+			BigInteger lower1 = getLowerIntervalBigInteger();
+			BigInteger upper1 = getUpperIntervalBigInteger();
+			
+			BigDecimal lower2 = getLowerIntervalBigDecimal();
+			BigDecimal upper2 = getUpperIntervalBigDecimal();
+			
+			if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.ORDERED_NORMALLY) {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.radixBigInteger(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.radixBigDecimal(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}else if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.INVERSELY_ORDERED) {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.radixBigInteger(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.radixBigDecimal(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}else {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}
+			
+		}catch(NumberFormatException e) {
+			Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Please enter a numeric data");
+			message.setHeaderText("Error in the entered number");
+			message.show();
+		}
+			
+		return string;
+	}
+	
+	public String sortByHeapAutomatic() {
+		String string = "";
+		try {
+			int lengthNumbers = getLengthNumbers();
+			BigInteger lower1 = getLowerIntervalBigInteger();
+			BigInteger upper1 = getUpperIntervalBigInteger();
+			
+			BigDecimal lower2 = getLowerIntervalBigDecimal();
+			BigDecimal upper2 = getUpperIntervalBigDecimal();
+			
+			if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.ORDERED_NORMALLY) {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.heapBigInteger(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.heapBigDecimal(numbers);
+					for (int i =0; i < lengthNumbers; i++) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}else if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.INVERSELY_ORDERED) {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					world2.heapBigInteger(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					world2.heapBigDecimal(numbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}else {
+				if(arbitrarilyRadioButt.isSelected()) {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigInteger[] numbers = world2.generatorBigInteger(lower1, upper1, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}else {
+					if(repeatedRadioButt.isSelected()) {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, true, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}else {
+						world2 = new AutomaticSorting(Sorting.FLOATING_POINT_NUMBERS, false, lower1, upper1, lengthNumbers, AutomaticSorting.INVERSELY_ORDERED, true);
+					}
+					BigDecimal[] numbers = world2.generatorBigDecimal(lower2, upper2, lengthNumbers);
+					for (int i =lengthNumbers-1; i > 0; i--) {
+						string+=numbers[i]+" // ";
+					}
+				}
+			}
+			
+		}catch(NumberFormatException e) {
+			Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Please enter a numeric data");
+			message.setHeaderText("Error in the entered number");
+			message.show();
+		}
+			
+		return string;
 	}
 
 	@FXML
@@ -250,32 +490,26 @@ public class StartController implements Initializable{
 	
 	@FXML
     void showResultRadix2(ActionEvent event) {
-		try {
-			getLengthNumbers();
-			getLowerInterval();
-			getUpperInterval();
-		}catch(NumberFormatException e) {
-			Alert message = new Alert(Alert.AlertType.ERROR);
-			message.setTitle("Error");
-			message.setContentText("Please enter a numeric data");
-			message.setHeaderText("Error in the entered number");
-			message.show();
-		}
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Radix-sort");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByRadixAutomatic());
+		double end = System.currentTimeMillis();
+		double value = end - start;
+		message.setHeaderText("The numbers have been sorted by Radix-sort!, and it lasted "+value+" milli seconds");
+		message.show();
     }
 	
 	@FXML
     void showResultHeap2(ActionEvent event) {
-		try {
-			getLengthNumbers();
-			getLowerInterval();
-			getUpperInterval();
-		}catch(NumberFormatException e) {
-			Alert message = new Alert(Alert.AlertType.ERROR);
-			message.setTitle("Error");
-			message.setContentText("Please enter a numeric data");
-			message.setHeaderText("Error in the entered number");
-			message.show();
-		}
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Heap-sort");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByHeapAutomatic());
+		double end = System.currentTimeMillis();
+		double value = end - start;
+		message.setHeaderText("The numbers have been sorted by Heap-sort!, and it lasted "+value+" milli seconds");
+		message.show();
     }
 	
 	@FXML
