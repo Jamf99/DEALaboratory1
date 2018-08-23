@@ -24,7 +24,7 @@ class SortingTest extends TestCase{
 		stage1();
 		double[] numbers2 = {1,3,2,4,5,6,8,9};
 		double[] numbers = {1,2,4,6,5,3,9,8};
-		s.merge(numbers);
+//		s.merge(numbers);
 		for(int i = 0; i < numbers.length; i++) {
 			assertEquals(numbers[i], numbers2[i]);
 		}
