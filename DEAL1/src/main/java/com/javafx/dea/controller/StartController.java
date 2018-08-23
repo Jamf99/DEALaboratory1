@@ -1,7 +1,10 @@
 package com.javafx.dea.controller;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.dea.model.AutomaticSorting;
 import com.dea.model.Sorting;
 
 import javafx.collections.FXCollections;
@@ -86,16 +89,16 @@ public class StartController implements Initializable{
 		this.radixButt2 = new Button();
 	}
 	
-	public double getLengthNumbers() throws NumberFormatException{
-		return Double.parseDouble(lengthNumbersTxt.getText());
+	public int getLengthNumbers() throws NumberFormatException{
+		return Integer.parseInt(lengthNumbersTxt.getText());
 	}
 	
-	public double getLowerInterval() throws NumberFormatException {
-		return Double.parseDouble(lowerIntervalTxt.getText());
+	public BigInteger getLowerInterval() throws NumberFormatException {
+		return new BigInteger(lowerIntervalTxt.getText());
 	}
 	
-	public double getUpperInterval() throws NumberFormatException {
-		return Double.parseDouble(upperIntervalTxt.getText());
+	public BigInteger getUpperInterval() throws NumberFormatException {
+		return new BigInteger(upperIntervalTxt.getText());
 	}
 	
 	public String getArbitrarily() {
@@ -106,50 +109,122 @@ public class StartController implements Initializable{
 		return floatingPointtxt.getText();
 	}
 	
-	public String sortByMerge() {
-		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+	public boolean isRepited() {
+		if(repeatedRadioButt.isSelected()) {
+			return true;
+		}else
+			return false;
+	}
+	
+	public String sortByMergeManually() {
 		String string = "";
-		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
+		if(arbitrarilyTxt.getText().isEmpty() == false) {
+			world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+			BigInteger[] numbers =world.transformStringToBigInteger(arbitrarilyTxt.getText());
 		
-		world.merge(numbers);
+			world.mergeBigInteger(numbers);
 		
-		for (int i =0; i < numbers.length; i++) {
-			string+=numbers[i]+" // ";
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
+		}else {
+			world = new Sorting(Sorting.FLOATING_POINT_NUMBERS);
+			BigDecimal[] numbers =world.transformStringToBigDecimal(floatingPointtxt.getText());
+		
+			world.mergeBigDecimal(numbers);
+		
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
 		}
 		return string;
 	}
 	
-	public String sortByHeap() {
-		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+	public String sortByHeapManually() {
 		String string = "";
-		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
-		world.heap(numbers);
-
-		for (int i = 0; i < numbers.length; i++) {
-			string+=numbers[i]+" // ";
+		if(arbitrarilyTxt.getText().isEmpty() == false) {
+			world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+			BigInteger[] numbers =world.transformStringToBigInteger(arbitrarilyTxt.getText());
+		
+			world.heapBigInteger(numbers);
+		
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
+		}else {
+			world = new Sorting(Sorting.FLOATING_POINT_NUMBERS);
+			BigDecimal[] numbers =world.transformStringToBigDecimal(floatingPointtxt.getText());
+		
+			world.heapBigDecimal(numbers);
+		
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
 		}
 		return string;
 	}
 	
-	public String sortByRadix() {
-		world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+	public String sortByRadixManually() {
 		String string = "";
-		double[] numbers =world.transformStringToDouble(arbitrarilyTxt.getText());
+		if(arbitrarilyTxt.getText().isEmpty() == false) {
+			world = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+			BigInteger[] numbers =world.transformStringToBigInteger(arbitrarilyTxt.getText());
 		
-		world.radix(numbers);
-
-		for (int i = 0; i < numbers.length; i++) {
-			string+=numbers[i]+" - ";
+			world.radixBigInteger(numbers);
+		
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
+		}else {
+			world = new Sorting(Sorting.FLOATING_POINT_NUMBERS);
+			BigDecimal[] numbers =world.transformStringToBigDecimal(floatingPointtxt.getText());
+		
+			world.radixBigDecimal(numbers);
+		
+			for (int i =0; i < numbers.length; i++) {
+				string+=numbers[i]+" // ";
+			}
 		}
 		return string;
 	}
-
-	@FXML
-    void showResultMerge2(ActionEvent event) {
+	
+	public String sortByMergeAutomatic() {
+		String string = "";
 		try {
-			getLengthNumbers();
-			getLowerInterval();
-			getUpperInterval();
+			int lengthNumbers = getLengthNumbers();
+			BigInteger lower = getLowerInterval();
+			BigInteger upper = getUpperInterval();
+			
+			if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.ORDERED_NORMALLY) {
+				if(repeatedRadioButt.isSelected()) {
+					if(arbitrarilyRadioButt.isSelected()) {
+						world = new AutomaticSorting(Sorting.ARBITRARILY_LONG_NUMBERS, true, lower, upper, lengthNumbers, AutomaticSorting.ORDERED_NORMALLY, true);
+//						BigInteger[] numbers = world.
+//						world.mergeBigInteger(numbers);
+					}else {
+						
+					}
+				}else {
+					if(arbitrarilyRadioButt.isSelected()) {
+						
+					}else {
+						
+					}
+				}
+			}else if(preferencesTypeCBox.getSelectionModel().getSelectedIndex() == AutomaticSorting.INVERSELY_ORDERED) {
+				if(repeatedRadioButt.isSelected()) {
+					
+				}else {
+					
+				}
+			}else {
+				if(repeatedRadioButt.isSelected()) {
+						
+				}else {
+						
+				}
+			}
+			
 		}catch(NumberFormatException e) {
 			Alert message = new Alert(Alert.AlertType.ERROR);
 			message.setTitle("Error");
@@ -157,6 +232,20 @@ public class StartController implements Initializable{
 			message.setHeaderText("Error in the entered number");
 			message.show();
 		}
+			
+		return "";
+	}
+
+	@FXML
+    void showResultMerge2(ActionEvent event) {
+		Alert message = new Alert(Alert.AlertType.INFORMATION);
+		message.setTitle("Sorting by Merge-sort");
+		double start = System.currentTimeMillis();
+		message.setContentText(sortByMergeAutomatic());
+		double end = System.currentTimeMillis();
+		double value = end - start;
+		message.setHeaderText("The numbers have been sorted by Merge-sort!, and it lasted "+value+" milli seconds");
+		message.show();
     }
 	
 	@FXML
@@ -194,7 +283,7 @@ public class StartController implements Initializable{
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Merge-sort");
 		double start = System.currentTimeMillis();
-		message.setContentText(sortByMerge());
+		message.setContentText(sortByMergeManually());
 		double end = System.currentTimeMillis();
 		double value = end - start;
 		message.setHeaderText("The numbers have been sorted by Merge-sort!, and it lasted "+value+" milli seconds");
@@ -206,7 +295,7 @@ public class StartController implements Initializable{
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Radix-sort");
 		double start = System.currentTimeMillis();
-		message.setContentText(sortByRadix());
+		message.setContentText(sortByRadixManually());
 		double end = System.currentTimeMillis();
 		double value = end - start;
 		message.setHeaderText("The numbers have been sorted by Radix-sort!, and it lasted "+value+" milli seconds");
@@ -218,10 +307,9 @@ public class StartController implements Initializable{
 		Alert message = new Alert(Alert.AlertType.INFORMATION);
 		message.setTitle("Sorting by Heap-sort");
 		double start = System.currentTimeMillis();
-		message.setContentText(sortByHeap());
+		message.setContentText(sortByHeapManually());
 		double end = System.currentTimeMillis();
 		double value = end-start;
-		System.out.println(value);
 		message.setHeaderText("The numbers have been sorted by Heap-sort!, and it lasted "+value+" milli seconds");
 		message.show();
     }
