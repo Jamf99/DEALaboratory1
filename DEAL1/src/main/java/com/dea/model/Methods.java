@@ -36,7 +36,7 @@ public class Methods {
         int i = 0, j = 0;
         int k = l;
         while (i < n1 && j < n2) {
-        if (L[i].bitCount() <= R[j].bitCount()) {
+        if (L[i].doubleValue() <= R[j].doubleValue()) {
                 arr[k] = L[i];
                 i++;
             } else {
@@ -56,8 +56,55 @@ public class Methods {
             k++;
         }
     }	
+	
+	public void mergeSortBigIntegerInversely(BigInteger arr[], int l, int r) {
+        if (l < r) {
+            int m = (l+r)/2;
+            mergeSortBigInteger(arr, l, m);
+            mergeSortBigInteger(arr , m+1, r);
+            mergeBigInteger(arr, l, m, r);
+        }
+    }
+	
+	public void mergeBigIntegerInversely(BigInteger arr[], int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        BigInteger L[] = new BigInteger[n1];
+        BigInteger R[] = new BigInteger[n2];
+
+        for (int i=0; i<n1; ++i) {
+            L[i] = arr[l + i];
+        }
+        for (int j=0; j<n2; ++j) {
+            R[j] = arr[m + 1+ j];
+        }
+        int i = 0, j = 0;
+        int k = l;
+        while (i < n1 && j < n2) {
+        if (L[i].doubleValue() >= R[j].doubleValue()) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+	
 	public void radixSortBigInteger(BigInteger[] numbers) {
-		int max    = 1;
+		double max    = 1;
         int nbytes = 4;
         int nColas = (int) Math.pow(2,nbytes) ;
         Queue<BigInteger>[] cola = new LinkedList[nColas];
@@ -65,8 +112,8 @@ public class Methods {
         int     div     = 0;
         for(int i=0; i<max; i++) {
             for(BigInteger numero: numbers) {
-                if(i==0) if(numero.bitCount()>max) max=numero.bitCount();
-                int numCola = ((numero.bitCount()>>div) & 0xf);
+                if(i==0) if(numero.doubleValue()>max) max=numero.doubleValue();
+                int numCola = ((numero.intValue()>>div) & 0xf);
                 cola[numCola].add(numero);
             }
             div = div+nbytes;
@@ -97,8 +144,8 @@ public class Methods {
         int may;
         if(izq>fin) return;
         if(der>fin) may=izq;
-        else may= numbers[izq].bitCount()>numbers[der].bitCount()?izq:der;
-        if(numbers[nodo].bitCount() < numbers[may].bitCount()) {
+        else may= numbers[izq].doubleValue()>numbers[der].doubleValue()?izq:der;
+        if(numbers[nodo].doubleValue() < numbers[may].doubleValue()) {
             BigInteger tmp = numbers[nodo];
             numbers[nodo] = numbers[may];
             numbers[may] = tmp;
@@ -151,6 +198,53 @@ public class Methods {
             k++;
         }
     }	
+	
+	public void mergeSortBigDecimalInversely(BigDecimal arr[], int l, int r) {
+        if (l < r) {
+            int m = (l+r)/2;
+            mergeSortBigDecimal(arr, l, m);
+            mergeSortBigDecimal(arr , m+1, r);
+            mergeBigDecimal(arr, l, m, r);
+        }
+    }
+	
+	public void mergeBigDecimalInversely(BigDecimal arr[], int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        BigDecimal L[] = new BigDecimal[n1];
+        BigDecimal R[] = new BigDecimal[n2];
+
+        for (int i=0; i<n1; ++i) {
+            L[i] = arr[l + i];
+        }
+        for (int j=0; j<n2; ++j) {
+            R[j] = arr[m + 1+ j];
+        }
+        int i = 0, j = 0;
+        int k = l;
+        while (i < n1 && j < n2) {
+        if (L[i].doubleValue() >= R[j].doubleValue()) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }	
+	
 	public void radixSortBigDecimal(BigDecimal[] numbers) {
 		double max    = 1;
         int nbytes = 4;
