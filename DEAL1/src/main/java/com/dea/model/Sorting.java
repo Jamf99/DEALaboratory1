@@ -29,6 +29,14 @@ public class Sorting {
 		methods.mergeSortBigInteger(numbers, 0, numbers.length - 1);
 	}
 	
+	public void mergeBigIntegerInversely(BigInteger[] numbers) {
+		methods.mergeSortBigIntegerInversely(numbers, 0, numbers.length - 1);
+	}
+	
+	public void mergeBigDecimalInversely(BigDecimal[] numbers) {
+		methods.mergeSortBigDecimalInversely(numbers, 0, numbers.length - 1);
+	}
+	
 	public void radixBigInteger(BigInteger[] numbers) {
 		methods.radixSortBigInteger(numbers);
 	}
