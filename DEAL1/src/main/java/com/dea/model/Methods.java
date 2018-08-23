@@ -1,5 +1,7 @@
 package com.dea.model;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -9,21 +11,21 @@ public class Methods {
 		
 	}
 	
-	public void mergeSort(double arr[], int l, int r) {
+	public void mergeSortBigInteger(BigInteger arr[], int l, int r) {
         if (l < r) {
             int m = (l+r)/2;
-            mergeSort(arr, l, m);
-            mergeSort(arr , m+1, r);
-            merge(arr, l, m, r);
+            mergeSortBigInteger(arr, l, m);
+            mergeSortBigInteger(arr , m+1, r);
+            mergeBigInteger(arr, l, m, r);
         }
     }
 	
-	public void merge(double arr[], int l, int m, int r) {
+	public void mergeBigInteger(BigInteger arr[], int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
 
-        double L[] = new double [n1];
-        double R[] = new double [n2];
+        BigInteger L[] = new BigInteger[n1];
+        BigInteger R[] = new BigInteger[n2];
 
         for (int i=0; i<n1; ++i) {
             L[i] = arr[l + i];
@@ -34,7 +36,7 @@ public class Methods {
         int i = 0, j = 0;
         int k = l;
         while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
+        if (L[i].bitCount() <= R[j].bitCount()) {
                 arr[k] = L[i];
                 i++;
             } else {
@@ -54,53 +56,148 @@ public class Methods {
             k++;
         }
     }	
-	public void radixSort(double[] numbers) {
+	public void radixSortBigInteger(BigInteger[] numbers) {
 		int max    = 1;
         int nbytes = 4;
         int nColas = (int) Math.pow(2,nbytes) ;
-        Queue<Integer>[] cola = new LinkedList[nColas];
-        for(int i=0; i<nColas; i++) cola[i]=new LinkedList<Integer>();
+        Queue<BigInteger>[] cola = new LinkedList[nColas];
+        for(int i=0; i<nColas; i++) cola[i]=new LinkedList<BigInteger>();
         int     div     = 0;
         for(int i=0; i<max; i++) {
-            for(double numero: numbers) {
-                if(i==0) if(numero>max) max=(int)numero;
-                int numCola = ((int)numero>>div) & 0xf;
-                cola[numCola].add((int)numero);
+            for(BigInteger numero: numbers) {
+                if(i==0) if(numero.bitCount()>max) max=numero.bitCount();
+                int numCola = ((numero.bitCount()>>div) & 0xf);
+                cola[numCola].add(numero);
             }
             div = div+nbytes;
             int j=0;
-            for(Queue<Integer> c: cola) {
+            for(Queue<BigInteger> c: cola) {
                 while(!c.isEmpty()) numbers[j++]=c.remove();
             }
             if(i==0) { max = (int) (Math.log(max)/Math.log(nColas)) + 1; }
         }
 	}
 	
-	public void heapSort(double[] numbers) {
+	public void heapSortBigInteger(BigInteger[] numbers) {
 		final int N = numbers.length;
         for(int nodo = N/2; nodo>=0; nodo--) {
-        	heapsort(numbers, nodo, N-1);
+        	heapsortBigInteger(numbers, nodo, N-1);
         }
         for(int nodo = N-1; nodo>=0; nodo--) {
-            double tmp = numbers[0];
+            BigInteger tmp = numbers[0];
             numbers[0]    = numbers[nodo];
             numbers[nodo] = tmp;
-            heapsort(numbers, 0, nodo-1);
+            heapsortBigInteger(numbers, 0, nodo-1);
         }
 	}
 	
-	public void heapsort(double[] numbers, int nodo, int fin) {
+	public void heapsortBigInteger(BigInteger[] numbers, int nodo, int fin) {
 		int izq = 2*nodo+1;
         int der = izq+1;
         int may;
         if(izq>fin) return;
         if(der>fin) may=izq;
-        else may= numbers[izq]>numbers[der]?izq:der;
-        if(numbers[nodo] < numbers[may]) {
-            double tmp = numbers[nodo];
+        else may= numbers[izq].bitCount()>numbers[der].bitCount()?izq:der;
+        if(numbers[nodo].bitCount() < numbers[may].bitCount()) {
+            BigInteger tmp = numbers[nodo];
             numbers[nodo] = numbers[may];
-            numbers[may]  = tmp;
-            heapsort(numbers, may, fin);
+            numbers[may] = tmp;
+            heapsortBigInteger(numbers, may, fin);
+        }
+	}
+	
+	public void mergeSortBigDecimal(BigDecimal arr[], int l, int r) {
+        if (l < r) {
+            int m = (l+r)/2;
+            mergeSortBigDecimal(arr, l, m);
+            mergeSortBigDecimal(arr , m+1, r);
+            mergeBigDecimal(arr, l, m, r);
+        }
+    }
+	
+	public void mergeBigDecimal(BigDecimal arr[], int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        BigDecimal L[] = new BigDecimal[n1];
+        BigDecimal R[] = new BigDecimal[n2];
+
+        for (int i=0; i<n1; ++i) {
+            L[i] = arr[l + i];
+        }
+        for (int j=0; j<n2; ++j) {
+            R[j] = arr[m + 1+ j];
+        }
+        int i = 0, j = 0;
+        int k = l;
+        while (i < n1 && j < n2) {
+        if (L[i].doubleValue() <= R[j].doubleValue()) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }	
+	public void radixSortBigDecimal(BigDecimal[] numbers) {
+		double max    = 1;
+        int nbytes = 4;
+        int nColas = (int) Math.pow(2,nbytes) ;
+        Queue<BigDecimal>[] cola = new LinkedList[nColas];
+        for(int i=0; i<nColas; i++) cola[i]=new LinkedList<BigDecimal>();
+        int     div     = 0;
+        for(int i=0; i<max; i++) {
+            for(BigDecimal numero: numbers) {
+                if(i==0) if(numero.doubleValue()>max) max=numero.doubleValue();
+                int numCola = ((numero.intValue()>>div) & 0xf);
+                cola[numCola].add(numero);
+            }
+            div = div+nbytes;
+            int j=0;
+            for(Queue<BigDecimal> c: cola) {
+                while(!c.isEmpty()) numbers[j++]=c.remove();
+            }
+            if(i==0) { max = (int) (Math.log(max)/Math.log(nColas)) + 1; }
+        }
+	}
+	
+	public void heapSortBigDecimal(BigDecimal[] numbers) {
+		final int N = numbers.length;
+        for(int nodo = N/2; nodo>=0; nodo--) {
+        	heapsortBigDecimal(numbers, nodo, N-1);
+        }
+        for(int nodo = N-1; nodo>=0; nodo--) {
+            BigDecimal tmp = numbers[0];
+            numbers[0]    = numbers[nodo];
+            numbers[nodo] = tmp;
+            heapsortBigDecimal(numbers, 0, nodo-1);
+        }
+	}
+	
+	public void heapsortBigDecimal(BigDecimal[] numbers, int nodo, int fin) {
+		int izq = 2*nodo+1;
+        int der = izq+1;
+        int may;
+        if(izq>fin) return;
+        if(der>fin) may=izq;
+        else may= numbers[izq].doubleValue()>numbers[der].doubleValue()?izq:der;
+        if(numbers[nodo].doubleValue() < numbers[may].doubleValue()) {
+            BigDecimal tmp = numbers[nodo];
+            numbers[nodo] = numbers[may];
+            numbers[may] = tmp;
+            heapsortBigDecimal(numbers, may, fin);
         }
 	}
 	
