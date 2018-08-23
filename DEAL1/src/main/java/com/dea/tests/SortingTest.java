@@ -1,10 +1,10 @@
 package com.dea.tests;
 
-import static org.junit.Assert.assertArrayEquals;
+//import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.dea.model.Sorting;
+//import com.dea.model.Sorting;
 
 import junit.framework.TestCase;
 
@@ -13,10 +13,10 @@ class SortingTest extends TestCase{
 	double[] numbers1 = {8,3,4,11,15,0,9,12,10,7.5,7.01,8,10,6,14};
 	int[] numbers2 = {15,14,13,12,11,10,1,2,3,4,5,8,7,6,9};
 	
-	private Sorting s;
+//	private Sorting s;
 	
 	private void stage1() {
-		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+//		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
 	}
 	
 	@Test
