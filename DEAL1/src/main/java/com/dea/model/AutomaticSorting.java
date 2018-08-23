@@ -55,17 +55,39 @@ public class AutomaticSorting extends Sorting{
 		return 0;
 	}
 	
-	public BigInteger[] generatorBigInteger(double min, double max, int quantity) {
+	public BigInteger[] generatorBigInteger(BigInteger min, BigInteger max, int quantity) {
 		BigInteger[] numbers = new BigInteger[quantity];
-		int low = (int)(max-min)+1;
+		double low = (int)(max.doubleValue()-min.doubleValue())+1;
 		if(isRepeatedNumbers()) {
 			for(int i = 0; i < quantity; i++) {
-				numbers[i] = BigDecimal.valueOf(Math.random() * low + min).toBigInteger();
+				numbers[i] = BigDecimal.valueOf(Math.random() * low + min.doubleValue()).toBigInteger();
 			}
 		}else {
 			if(low >= quantity) {
 				for(int i = 0; i < quantity; i++) {
-					numbers[i] = BigDecimal.valueOf(Math.random() * low + min).toBigInteger();
+					numbers[i] = BigDecimal.valueOf(Math.random() * low + min.doubleValue()).toBigInteger();
+					for(int j = 0; j < i; j++) {
+						if(numbers[i] == numbers[j]) {
+							i--;
+						}
+					}
+				}
+			}
+		}
+		return numbers;
+	}
+	
+	public BigDecimal[] generatorBigDecimal(BigDecimal min, BigDecimal max, int quantity) {
+		BigDecimal[] numbers = new BigDecimal[quantity];
+		double low = (int)(max.doubleValue()-min.doubleValue())+1;
+		if(isRepeatedNumbers()) {
+			for(int i = 0; i < quantity; i++) {
+				numbers[i] = BigDecimal.valueOf(Math.random() * low + min.doubleValue());
+			}
+		}else {
+			if(low >= quantity) {
+				for(int i = 0; i < quantity; i++) {
+					numbers[i] = BigDecimal.valueOf(Math.random() * low + min.doubleValue());
 					for(int j = 0; j < i; j++) {
 						if(numbers[i] == numbers[j]) {
 							i--;
