@@ -1,5 +1,7 @@
 package com.dea.model;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class Sorting {
 	
@@ -23,23 +25,44 @@ public class Sorting {
 		return typeOfNumbers;
 	}
 	
-	public void merge(double[] numbers) {
-		methods.mergeSort(numbers, 0, numbers.length - 1);
+	public void mergeBigInteger(BigInteger[] numbers) {
+		methods.mergeSortBigInteger(numbers, 0, numbers.length - 1);
 	}
 	
-	public void radix(double[] numbers) {
-		methods.radixSort(numbers);
+	public void radixBigInteger(BigInteger[] numbers) {
+		methods.radixSortBigInteger(numbers);
 	}
 	
-	public void heap(double[] numbers) {
-		methods.heapSort(numbers);
+	public void heapBigInteger(BigInteger[] numbers) {
+		methods.heapSortBigInteger(numbers);
 	}
 	
-	public double[] transformStringToDouble(String string) {
+	public void mergeBigDecimal(BigDecimal[] numbers) {
+		methods.mergeSortBigDecimal(numbers, 0, numbers.length - 1);
+	}
+	
+	public void radixBigDecimal(BigDecimal[] numbers) {
+		methods.radixSortBigDecimal(numbers);
+	}
+	
+	public void heapBigDecimal(BigDecimal[] numbers) {
+		methods.heapSortBigDecimal(numbers);
+	}
+	
+	public BigInteger[] transformStringToBigInteger(String string) {
 		String[] aux = string.split(",");
-		double[] numbers = new double[aux.length];
+		BigInteger[] numbers = new BigInteger[aux.length];
 		for(int i = 0; i < aux.length; i++) {
-			numbers[i] = Double.parseDouble(aux[i]);
+			numbers[i] = new BigInteger(aux[i]);
+		}
+		return numbers;
+	}
+	
+	public BigDecimal[] transformStringToBigDecimal(String string) {
+		String[] aux = string.split(",");
+		BigDecimal[] numbers = new BigDecimal[aux.length];
+		for(int i = 0; i < aux.length; i++) {
+			numbers[i] = new BigDecimal(aux[i]);
 		}
 		return numbers;
 	}
