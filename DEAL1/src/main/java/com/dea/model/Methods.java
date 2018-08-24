@@ -102,7 +102,7 @@ public class Methods {
             k++;
         }
     }
-	
+
 	public void radixSortBigInteger(BigInteger[] numbers) {
 		double max    = 1;
         int nbytes = 4;
@@ -112,7 +112,7 @@ public class Methods {
         int     div     = 0;
         for(int i=0; i<max; i++) {
             for(BigInteger numero: numbers) {
-                if(i==0) if(numero.doubleValue()>max) max=numero.doubleValue();
+                if(i==0) if(numero.intValue()>max) max=numero.intValue();
                 int numCola = ((numero.intValue()>>div) & 0xf);
                 cola[numCola].add(numero);
             }
