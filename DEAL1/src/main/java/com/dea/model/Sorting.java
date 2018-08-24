@@ -56,7 +56,11 @@ public class Sorting {
 	public void heapBigDecimal(BigDecimal[] numbers) {
 		methods.heapSortBigDecimal(numbers);
 	}
-	
+	/**
+	 * This method reads the string and transforms it each value and adds it to the array of big integers
+	 * @param string chain of numbers that need to be separate 
+	 * @return returns an array of bigIntegers
+	 */
 	public BigInteger[] transformStringToBigInteger(String string) {
 		String[] aux = string.split(",");
 		BigInteger[] numbers = new BigInteger[aux.length];
@@ -65,7 +69,11 @@ public class Sorting {
 		}
 		return numbers;
 	}
-	
+	/**
+	 * This method reads the string and transforms it each value and adds it to the array of big decimals
+	 * @param string chain of numbers that need to be separate 
+	 * @return returns an array of BigDecimal
+	 */
 	public BigDecimal[] transformStringToBigDecimal(String string) {
 		String[] aux = string.split(",");
 		BigDecimal[] numbers = new BigDecimal[aux.length];
