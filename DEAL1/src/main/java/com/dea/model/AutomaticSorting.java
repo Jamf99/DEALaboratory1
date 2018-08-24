@@ -54,7 +54,14 @@ public class AutomaticSorting extends Sorting{
 	public double calculatePercentOfDisorder() {
 		return 0;
 	}
-	
+	/**
+	 * This method allows to generate arbitrary BigIntegers, by a interval of minimum value and maximum value, also the quantity of the number
+	 * 
+	 * @param min this is minimum value that the number can be
+	 * @param max this is the maximum value the number can be
+	 * @param quantity this is the amount of the numbers that it will create
+	 * @return returns an array of big integers with all of the boxes fill
+	 */
 	public BigInteger[] generatorBigInteger(BigInteger min, BigInteger max, int quantity) {
 		BigInteger[] numbers = new BigInteger[quantity];
 		double low = (int)(max.doubleValue()-min.doubleValue())+1;
@@ -76,7 +83,13 @@ public class AutomaticSorting extends Sorting{
 		}
 		return numbers;
 	}
-	
+	/**
+	 * This method allows to generate big decimal numbers for the floating numbers that the program needs
+	 * @param min this is the minimum value that the number can be
+	 * @param max this is the maximum value the number can be
+	 * @param quantity this is the amount of numbers that the program will create 
+	 * @return returns an array of BigDecimal with all of the boxes fill
+	 */
 	public BigDecimal[] generatorBigDecimal(BigDecimal min, BigDecimal max, int quantity) {
 		BigDecimal[] numbers = new BigDecimal[quantity];
 		double low = (int)(max.doubleValue()-min.doubleValue())+1;

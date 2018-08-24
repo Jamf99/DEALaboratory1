@@ -10,7 +10,13 @@ public class Methods {
 	public Methods() {
 		
 	}
-	
+	/**
+	 * This method is the main part of the the merge sorting method, and it
+	 * sorts the numbers ascendent way
+	 * @param arr array of big numbers
+	 * @param l it helps to know where is the next place to split the array
+	 * @param r it heps to know where is the next place to split the array
+	 */
 	public void mergeSortBigInteger(BigInteger arr[], int l, int r) {
         if (l < r) {
             int m = (l+r)/2;
@@ -19,7 +25,15 @@ public class Methods {
             mergeBigInteger(arr, l, m, r);
         }
     }
-	
+	/**
+	 * This method sort the half of the array that is sorting 
+	 * pre: arr!=null
+	 * post: sorts a part of the array
+	 * @param arr array of big numbers
+	 * @param l begging of the array
+	 * @param m half of the array
+	 * @param r end of the array
+	 */
 	public void mergeBigInteger(BigInteger arr[], int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -56,7 +70,13 @@ public class Methods {
             k++;
         }
     }	
-	
+	/**
+	 * This method is the main part of the the merge sorting method, and it
+	 * sorts the numbers descendant way
+	 * @param arr array of big numbers
+	 * @param l it helps to know where is the next place to split the array
+	 * @param r it heps to know where is the next place to split the array
+	 */
 	public void mergeSortBigIntegerInversely(BigInteger arr[], int l, int r) {
         if (l < r) {
             int m = (l+r)/2;
@@ -65,7 +85,14 @@ public class Methods {
             mergeBigInteger(arr, l, m, r);
         }
     }
-	
+	/** This method sort the half of the array that is sorting but this is the descendant way
+	 * pre: arr!=null
+	 * post: sorts a part of the array
+	 * @param arr array of big numbers
+	 * @param l begging of the array
+	 * @param m half of the array
+	 * @param r end of the array
+	 */
 	public void mergeBigIntegerInversely(BigInteger arr[], int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -103,6 +130,12 @@ public class Methods {
         }
     }
 
+	/**
+	 * This method allows to sort the numbers by a different methods of sorting in a ascendant way
+	 * pre: numbers!=null
+	 * post: sorts the array
+	 * @param numbers this is the array of big numbers
+	 */
 	public void radixSortBigInteger(BigInteger[] numbers) {
 		double max    = 1;
         int nbytes = 4;
@@ -124,7 +157,11 @@ public class Methods {
             if(i==0) { max = (int) (Math.log(max)/Math.log(nColas)) + 1; }
         }
 	}
-	
+	/**
+	 * this method part of the heap-sort, it sorts numbers by a different type of strategy
+	 * pre: numbers!=null
+	 * @param numbers array of big numbers
+	 */
 	public void heapSortBigInteger(BigInteger[] numbers) {
 		final int N = numbers.length;
         for(int nodo = N/2; nodo>=0; nodo--) {
@@ -137,7 +174,13 @@ public class Methods {
             heapsortBigInteger(numbers, 0, nodo-1);
         }
 	}
-	
+	/**
+	 * This method is the other part of the heap sort strategy
+	 * pre: numbers!=null
+	 * @param numbers this is the array of numbers
+	 * @param nodo this allows to know where to divide
+	 * @param fin this numbrs tells the method where to stop
+	 */
 	public void heapsortBigInteger(BigInteger[] numbers, int nodo, int fin) {
 		int izq = 2*nodo+1;
         int der = izq+1;
@@ -152,7 +195,14 @@ public class Methods {
             heapsortBigInteger(numbers, may, fin);
         }
 	}
-	
+	 /** This method sort the half of the array that is sorting 
+	 * pre: arr!=null
+	 * post: sorts a part of the array
+	 * @param arr array of big decimals
+	 * @param l bigging of the array
+	 * @param m half of the array
+	 * @param r end of the array
+	 */
 	public void mergeSortBigDecimal(BigDecimal arr[], int l, int r) {
         if (l < r) {
             int m = (l+r)/2;
@@ -161,7 +211,15 @@ public class Methods {
             mergeBigDecimal(arr, l, m, r);
         }
     }
-	
+	/**
+	 * This method sort the half of the array that is sorting 
+	 * pre: arr!=null
+	 * post: sorts a part of the array
+	 * @param arr array of big decimals
+	 * @param l begging of the array
+	 * @param m half of the array
+	 * @param r end of the array
+	 */
 	public void mergeBigDecimal(BigDecimal arr[], int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -198,7 +256,13 @@ public class Methods {
             k++;
         }
     }	
-	
+	/**
+	 * This method is the main part of the the merge sorting method, and it
+	 * sorts the numbers descendant way
+	 * @param arr array of big decimals
+	 * @param l it helps to know where is the next place to split the array
+	 * @param r it helps to know where is the next place to split the array
+	 */
 	public void mergeSortBigDecimalInversely(BigDecimal arr[], int l, int r) {
         if (l < r) {
             int m = (l+r)/2;
@@ -207,7 +271,14 @@ public class Methods {
             mergeBigDecimal(arr, l, m, r);
         }
     }
-	
+	/** This method sort the half of the array that is sorting but this is the descendant way
+	 * pre: arr!=null
+	 * post: sorts a part of the array
+	 * @param arr array of big decimals
+	 * @param l begging of the array
+	 * @param m half of the array
+	 * @param r end of the array
+	 */
 	public void mergeBigDecimalInversely(BigDecimal arr[], int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -244,7 +315,11 @@ public class Methods {
             k++;
         }
     }	
-	
+	/** This method allows to sort the numbers by a different methods of sorting in a ascendant way
+	 * pre: numbers!=null
+	 * post: sorts the array
+	 * @param numbers this is the array of big decimals
+	 */
 	public void radixSortBigDecimal(BigDecimal[] numbers) {
 		double max    = 1;
         int nbytes = 4;
@@ -266,7 +341,11 @@ public class Methods {
             if(i==0) { max = (int) (Math.log(max)/Math.log(nColas)) + 1; }
         }
 	}
-	
+	/**
+	 * this method part of the heap-sort, it sorts numbers by a different type of strategy
+	 * pre: numbers!=null
+	 * @param numbers array of big decimals
+	 */
 	public void heapSortBigDecimal(BigDecimal[] numbers) {
 		final int N = numbers.length;
         for(int nodo = N/2; nodo>=0; nodo--) {
@@ -279,7 +358,13 @@ public class Methods {
             heapsortBigDecimal(numbers, 0, nodo-1);
         }
 	}
-	
+	/**
+	 * This method is the other part of the heap sort strategy
+	 * pre: numbers!=null
+	 * @param numbers this is the array of big decimals
+	 * @param nodo this allows to know where to divide
+	 * @param fin this numbrs tells the method where to stop
+	 */
 	public void heapsortBigDecimal(BigDecimal[] numbers, int nodo, int fin) {
 		int izq = 2*nodo+1;
         int der = izq+1;

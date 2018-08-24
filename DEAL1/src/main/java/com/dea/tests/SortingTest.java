@@ -1,52 +1,133 @@
 package com.dea.tests;
 
-//import static org.junit.Assert.assertArrayEquals;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import org.junit.jupiter.api.Test;
 
-//import com.dea.model.Sorting;
+import com.dea.model.Sorting;
 
 import junit.framework.TestCase;
 
 class SortingTest extends TestCase{
 
-	double[] numbers1 = {8,3,4,11,15,0,9,12,10,7.5,7.01,8,10,6,14};
-	int[] numbers2 = {15,14,13,12,11,10,1,2,3,4,5,8,7,6,9};
+	BigInteger[] numbers2 = new BigInteger[4];
+	BigInteger[] numbers3 = new BigInteger[4];
+	BigDecimal[] numbers4 = new BigDecimal[4];
 	
-//	private Sorting s;
+	private Sorting s;
 	
 	private void stage1() {
-//		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		numbers2[0] = new BigInteger("100000");
+		numbers2[1] = new BigInteger("1000000000000");
+		numbers2[2] = new BigInteger("10000000");
+		numbers2[3] = new BigInteger("1000000000");
+		
+	}
+	
+	private void stage2() {
+		s = new Sorting(Sorting.ARBITRARILY_LONG_NUMBERS);
+		numbers3[0] = new BigInteger("19380138120831");
+		numbers3[1] = new BigInteger("481212923");
+		numbers3[2] = new BigInteger("1310238018230131");
+		numbers3[3] = new BigInteger("294294294322");
+	}
+	
+	private void stage3() {
+		s = new Sorting(Sorting.FLOATING_POINT_NUMBERS);
+		numbers4[0] = new BigDecimal("0.00000101");
+		numbers4[1] = new BigDecimal("0.001");
+		numbers4[2] = new BigDecimal("0.101010110");
+		numbers4[3] = new BigDecimal("0.00000101101");
 	}
 	
 	@Test
-	public void testMerge() {
+	public void testMergeBigInteger() {
 		stage1();
-		double[] numbers2 = {1,3,2,4,5,6,8,9};
-		double[] numbers = {1,2,4,6,5,3,9,8};
-//		s.merge(numbers);
-		for(int i = 0; i < numbers.length; i++) {
-			assertEquals(numbers[i], numbers2[i]);
+		BigInteger[] numbers1 = new BigInteger[numbers2.length];
+		numbers1[0] = new BigInteger("100000");
+		numbers1[1] = new BigInteger("10000000");
+		numbers1[2] = new BigInteger("1000000000");
+		numbers1[3] = new BigInteger("1000000000000");
+		s.mergeBigInteger(numbers2);
+		for(int i = 0; i < numbers2.length; i++) {
+			assertEquals(numbers1[i], numbers2[i]);
 		}
 	}
 	
-//	@Test
-//	public void testRadix() {
-//		stage1();
-//		int[] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-////		s.radix(numbers2);
-//		assertArrayEquals(n, numbers2);
-//	}
+	@Test
+	public void testRadixBigInteger() {
+		stage2();
+		BigInteger[] numbers1 = new BigInteger[numbers3.length];
+		numbers1[0] = new BigInteger("481212923");
+		numbers1[1] = new BigInteger("294294294322");
+		numbers1[2] = new BigInteger("19380138120831");
+		numbers1[3] = new BigInteger("1310238018230131");
+		s.radixBigInteger(numbers3);
+		for(int i = 0; i < numbers1.length; i++) {
+			assertEquals(numbers1[i], numbers3[i]);
+		}
+	}
 	
-//	@Test
-//	public void testHeap() {
-//		stage1();
-////		double[] n = {0,3,4,6,7.01,7.5,8,8,9,10,10,11,12,14,15};
-//		int[] n = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-////		s.heap(numbers2);
-//		for(int i = 0; i < n.length; i++) {
-//			assertEquals(n[i], numbers2[i]);
-//		}
-//	}
+	@Test
+	public void testHeapBigInteger() {
+		stage1();
+		BigInteger[] numbers1 = new BigInteger[numbers2.length];
+		numbers1[0] = new BigInteger("100000");
+		numbers1[1] = new BigInteger("10000000");
+		numbers1[2] = new BigInteger("1000000000");
+		numbers1[3] = new BigInteger("1000000000000");
+		s.heapBigInteger(numbers2);
+		for(int i = 0; i < numbers1.length; i++) {
+			assertEquals(numbers1[i], numbers2[i]);
+		}
+	}
+	
+	@Test
+	public void testHeapBigDecimal() {
+		stage3();
+		BigDecimal[] numbers1 = new BigDecimal[numbers4.length];
+		numbers1[0] = new BigDecimal("0.00000101");
+		numbers1[1] = new BigDecimal("0.00000101101");
+		numbers1[2] = new BigDecimal("0.001");
+		numbers1[3] = new BigDecimal("0.101010110");
+		
+		s.heapBigDecimal(numbers4);
+		for(int i = 0; i < numbers1.length; i++) {
+			assertEquals(numbers1[i], numbers4[i]);
+		}
+	}
+	
+	@Test
+	public void testMergeBigDecimal() {
+		stage3();
+		BigDecimal[] numbers1 = new BigDecimal[numbers4.length];
+		numbers1[0] = new BigDecimal("0.00000101");
+		numbers1[1] = new BigDecimal("0.00000101101");
+		numbers1[2] = new BigDecimal("0.001");
+		numbers1[3] = new BigDecimal("0.101010110");
+		
+		s.mergeBigDecimal(numbers4);
+		for(int i = 0; i < numbers1.length; i++) {
+			assertEquals(numbers1[i], numbers4[i]);
+		}
+	}
+	
+	@Test
+	public void testRadixBigDecimal() {
+		stage3();
+		BigDecimal[] numbers1 = new BigDecimal[numbers4.length];
+		numbers1[0] = new BigDecimal("0.00000101");
+		numbers1[1] = new BigDecimal("0.00000101101");
+		numbers1[2] = new BigDecimal("0.001");
+		numbers1[3] = new BigDecimal("0.101010110");
+		
+		s.radixBigDecimal(numbers4);
+		for(int i = 0; i < numbers1.length; i++) {
+			assertEquals(numbers1[i], numbers4[i]);
+		}
+	}
 
 }
